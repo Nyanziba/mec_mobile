@@ -21,8 +21,7 @@ def generate_launch_description():
     
 
     # URDF model path within your package
-    model_arg = DeclareLaunchArgument(
-        'model', default_value='robot_3d.urdf.xacro',
+    model_arg = DeclareLaunchArgument(name='model', default_value='robot_3d.urdf.xacro',
         description='Name of the URDF description to load'
     )
 
