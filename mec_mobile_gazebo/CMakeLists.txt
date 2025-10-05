@@ -16,7 +16,7 @@ find_package(ros_gz_sim REQUIRED)
 # find_package(<dependency> REQUIRED)
 # Copy necessary files to designated locations in the project
 install (
-  DIRECTORY launch worlds
+  DIRECTORY launch worlds models
   DESTINATION share/${PROJECT_NAME}
 )
 

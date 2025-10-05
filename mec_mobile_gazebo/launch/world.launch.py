@@ -16,9 +16,12 @@ def generate_launch_description():
     pkg_mec_mobile = get_package_share_directory('mec_mobile_gazebo')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
-    # Add your own gazebo library path here
-    gazebo_models_path = "/home/robotlabs/gazebo_models"
-    os.environ["GZ_SIM_RESOURCE_PATH"] = os.pathsep + gazebo_models_path
+    resource_paths = [
+        os.environ.get("GZ_SIM_RESOURCE_PATH", ""),
+        os.path.join(pkg_mec_mobile, 'worlds'),
+        os.path.join(pkg_mec_mobile, 'models')
+    ]
+    os.environ["GZ_SIM_RESOURCE_PATH"] = os.pathsep.join(filter(None, resource_paths))
 
 
     gazebo_launch = IncludeLaunchDescription(
